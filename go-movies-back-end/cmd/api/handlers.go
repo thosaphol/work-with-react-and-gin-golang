@@ -189,6 +189,14 @@ func (app *application) authenticate(ctx *gin.Context) {
 
 func (app *application) refreshToken(ctx *gin.Context) {
 	cookieValue, err := ctx.Cookie(app.auth.CookieName)
+	cookiews := ctx.Request.Cookies()
+	for _, elmt := range cookiews {
+		if elmt.Name == app.auth.CookieName {
+			fmt.Println("Cookie Name correct : ", elmt.Name)
+		} else {
+			fmt.Println("Cookie Name in-correct : ", elmt.Name)
+		}
+	}
 	if err != nil {
 		app.resErrorJSON(ctx, errors.New("unauthorized"), http.StatusUnauthorized)
 		return

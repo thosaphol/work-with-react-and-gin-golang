@@ -9,7 +9,8 @@ import (
 
 func (app *application) enableCORS(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Access-Control-Allow-Origin", "https://movies-mm.ddns.net")
+		// w.Header().Set("Access-Control-Allow-Origin", "https://movies-mm.ddns.net")
+		w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
 		w.Header().Set("Access-Control-Allow-Credentials", "true")
 		// w.Header().Set("Access-Control-Allow-Credentials", "true")
 		// w.Header().Set("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE,OPTIONS")
@@ -35,7 +36,7 @@ func (app *application) enableGinCORS() gin.HandlerFunc {
 	return cors.New(cors.Config{
 		AllowOrigins:     []string{"http://localhost:3000", "https://movies-mm.ddns.net"},
 		AllowMethods:     []string{"PUT", "PATCH", "POST", "GET", "OPTIONS", "DELETE"},
-		AllowHeaders:     []string{"Origin", "Authorization", "Access-Control-Allow-Origin", "X-CSRF-Token", "Accept", "Content-Type"},
+		AllowHeaders:     []string{"Origin", "Access-Control-Allow-Headers", "Authorization", "Access-Control-Allow-Origin", "X-CSRF-Token", "Accept", "Content-Type"},
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,
 	})

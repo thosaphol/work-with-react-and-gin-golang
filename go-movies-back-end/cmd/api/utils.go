@@ -95,4 +95,5 @@ func (app *application) resErrorJSON(ctx *gin.Context, err error, status ...int)
 
 func (app *application) SetCookieToContext(ctx *gin.Context, cookie *http.Cookie) {
 	ctx.SetCookie(cookie.Name, cookie.Value, cookie.MaxAge, cookie.Path, cookie.Domain, cookie.Secure, cookie.HttpOnly)
+	ctx.SetSameSite(cookie.SameSite)
 }
