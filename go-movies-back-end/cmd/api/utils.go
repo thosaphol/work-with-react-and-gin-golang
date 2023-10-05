@@ -89,7 +89,6 @@ func (app *application) resErrorJSON(ctx *gin.Context, err error, status ...int)
 	payload.Error = true
 	payload.Message = err.Error()
 
-	// return app.writeJSON(w, statusCode, payload)
 	ctx.JSON(statusCode, payload)
 }
 

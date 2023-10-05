@@ -5,8 +5,7 @@ import (
 )
 
 func (app *application) routes() *gin.Engine {
-	//creat a route mux
-	// mux := chi.NewRouter()
+	
 	router := gin.Default()
 
 	router.Use(app.enableGinCORS())
